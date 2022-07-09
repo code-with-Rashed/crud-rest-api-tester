@@ -79,7 +79,7 @@ function operation() {
    
    //url validation
    if (!url.validity.valid) {
-        alert("please enter valid url");
+        alert("Please enter a valid URL");
         return;
     }else{
       url = selectElement("url").value
@@ -89,37 +89,43 @@ function operation() {
       rawData = selectElement("rawBody").value;
    }
 
-   if (type === "POST" && url) {
+   if (type === "POST") {
       if (custom.checked) {
          postData(type, url, JSON.stringify(customData));
+         return;
       }
       if (raw.checked) {
          postData(type, url, rawData);
+         return;
       }
    }
-   if (type === "PUT" && url) {
+
+   if (type === "PUT") {
       if (custom.checked) {
          putData(type, url, JSON.stringify(customData));
+         return;
       }
       if (raw.checked) {
          putData(type, url, rawData);
+         return;
       }
    }
 
-
-   if (type === "DELETE" && url) {
+   if (type === "DELETE") {
       if (custom.checked) {
          deleteData(type, url, JSON.stringify(customData));
+         return;
       }
       if (raw.checked) {
          deleteData(type, url, rawData);
+         return;
       }
    }
 
-   if (type === "GET" && url && !custom.checked && !raw.checked) {
+   if (type === "GET" && !custom.checked && !raw.checked) {
       getData(type, url);
+      return;
    }
-
 }
 
 // Show any result
