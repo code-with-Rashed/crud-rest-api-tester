@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REST API TESTER</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>REST API TESTER</h1>
+        <div class="url-type">
+            <label>
+                <input type="url" id="url" placeholder="URL here">
+            </label>
+            <select id="selectType">
+                <option value="GET">GET</option>
+                <option value="POST">POST</option>
+                <option value="PUT">UPDATE</option>
+                <option value="DELETE">DELETE</option>
+            </select>
+        </div>
+        <div class="select-data-type" id="dataType">
+            <b>Select requested data type => </b>
+            <label>
+                Raw : <input type="radio" id="raw">
+            </label>
+            <label>
+                Custom : <input type="radio" id="custom">
+            </label>
+        </div>
+        <div id="data-body"></div>
+        <button id="go">GO</button>
+    </div>
+
+
+    <script src="app.js"></script>
+</body>
+
+</html>
