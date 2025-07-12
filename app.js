@@ -3,6 +3,8 @@ const selectType = selectElement("selectType");
 const raw = selectElement("raw");
 const custom = selectElement("custom");
 const dataBody = selectElement("data-body");
+const addHeader = selectElement("addHeader");
+let headers = { 'Content-Type': 'application/json' };
 var uniqueId = 1;
 
 //select any element
@@ -22,9 +24,39 @@ function getElementFromString(string) {
    return div.firstElementChild;
 }
 
+// add request headers
+addHeader.addEventListener("click", () => {
+   dataBody.innerHTML = "";
+   const dataType = selectElement("dataType");
+   dataType.style.display = "none";
+   let element;
+   for (const key in headers) {
+      element += `<div class="custom-body"><div class="custom-input"><div><p>key :</p><input type="text" class="header-key" placeholder="key" value="${key}"></div><div><p>value :</p><div class="more"><input type="text" class="header-value" placeholder="value" value="${headers[key]}"><button class="customBtn" onclick="addMore(true)" title="add more">+</button></div></div></div></div>`;
+   }
+   dataAppend(element);
+});
+// store headers temporary
+const storeHeaders = () => {
+   const key = document.querySelectorAll(".header-key");
+   const value = document.querySelectorAll(".header-value");
+   [...key].forEach((keys, keyInd) => {
+      [...value].forEach((values, valueInd) => {
+         if (keyInd === valueInd) {
+            if (keys.value && values.value) {
+               headers[keys.value] = values.value;
+            }
+         }
+      });
+   });
+}
+
 //select data type
 selectType.addEventListener("change", (elem) => {
    const dataType = selectElement("dataType");
+   storeHeaders();
+   if (headers) {
+      dataBody.innerHTML = "";
+   }
    if (elem.target.value !== "GET") {
       dataType.style.display = "block";
    }
@@ -47,9 +79,9 @@ custom.addEventListener("click", () => {
 });
 
 //add custom element
-function addMore() {
+function addMore(header) {
    uniqueId++;
-   dataBody.append(getElementFromString(`<div class="custom-body" id="deleteParam${uniqueId}"><div class="custom-input"><div><p>key :</p><input type="text" class="key" placeholder="key ${uniqueId}"></div><div><p>value :</p><div class="more"><input type="text" class="value" placeholder="value ${uniqueId}"><button class="customBtn" onclick="deleteElement('deleteParam${uniqueId}')" title="close now">-</button></div></div></div></div>`));
+   dataBody.append(getElementFromString(`<div class="custom-body" id="deleteParam${uniqueId}"><div class="custom-input"><div><p>key :</p><input type="text" class="${header ? "header-key" : "key"}" placeholder="key ${uniqueId}"></div><div><p>value :</p><div class="more"><input type="text" class="${header ? "header-value" : "value"}" placeholder="value ${uniqueId}"><button class="customBtn" onclick="deleteElement('deleteParam${uniqueId}')" title="close now">-</button></div></div></div></div>`));
 };
 
 //delete custom element
@@ -76,15 +108,15 @@ function operation() {
          });
       });
    }
-   
+   storeHeaders() // all header store
+
    //url validation
    if (!url.validity.valid) {
-        alert("Please enter a valid URL");
-        return;
-    }else{
+      alert("Please enter a valid URL");
+      return;
+   } else {
       url = selectElement("url").value
-    }
-
+   }
    if (raw.checked) {
       rawData = selectElement("rawBody").value;
    }
@@ -190,7 +222,9 @@ const request = function (type, url, data) {
       const xhr = new XMLHttpRequest();
       xhr.open(type, url);
       // xhr.responseType = "json";
-      xhr.setRequestHeader('Content-Type', 'application/json');
+      for (const key in headers) {
+         xhr.setRequestHeader(key, headers[key]);
+      }
       if (data) {
          xhr.send(data);
       } else {

@@ -1,133 +1,169 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: sans-serif;
-        }
+.container {
+    margin: 0 15%;
+    padding: 5px 10px 20px 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
 
-        .container {
-            margin: 0 15%;
-            padding: 5px 10px 20px 10px;
-            border: 1px solid #ccc;
-            text-align: center;
-        }
+.container>h1 {
+    background: black;
+    padding: 4px;
+    color: #fff;
+    border-radius: 4px;
+}
 
-        .container>h1 {
-            background: black;
-            padding: 4px;
-            color: #fff;
-            border-radius: 4px;
-        }
+.url-type {
+    width: 60%;
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+}
 
-        .url-type {
-            width: 60%;
-            margin: 10px auto;
-            display: flex;
-            justify-content: center;
-        }
+.url-type>label {
+    flex-basis: 87%;
+}
 
-        .url-type>label {
-            flex-basis: 87%;
-        }
+.url-type>label>input {
+    width: 100%;
+    padding: 6px;
+    border-radius: 4px;
+    outline-color: green;
+}
 
-        .url-type>label>input {
-            width: 100%;
-            padding: 6px;
-            border-radius: 4px;
-            outline-color: green;
-        }
+.url-type>select {
+    flex-basis: 12%;
+    padding: 6px;
+    border-radius: 4px;
+    outline-color: green;
+}
 
-        .url-type>select {
-            flex-basis: 12%;
-            padding: 6px;
-            border-radius: 4px;
-            outline-color: green;
-        }
-        #dataType{
-            display: none;
-        }
-        .select-data-type {
-            width: 60%;
-            margin: 12px auto;
-            text-align: left;
-        }
+#dataType {
+    display: none;
+}
 
-        .select-data-type>b {
-            margin-right: 5px;
-        }
+.select-data-type {
+    width: 60%;
+    margin: 12px auto;
+    text-align: left;
+}
 
-        .select-data-type>label {
-            margin-right: 12px;
-        }
+.select-data-type>b {
+    margin-right: 5px;
+}
 
-        .select-data-type>label>input {
-            accent-color: green;
-            cursor: pointer;
-        }
+.select-data-type>label {
+    margin-right: 12px;
+}
 
-        #data-body {
-            width: 60%;
-            margin: 14px auto;
-            text-align: left;
-        }
+.select-data-type>label>input {
+    accent-color: green;
+    cursor: pointer;
+}
 
-        #data-body>textarea {
-            width: 100%;
-            margin-top: 5px;
-            padding: 6px;
-            border-radius: 4px;
-            outline-color: green;
-        }
+#data-body {
+    width: 60%;
+    margin: 14px auto;
+    text-align: left;
+}
 
-        .custom-body {
-            width: 100%;
-            margin-top: 5px;
-        }
+#data-body>textarea {
+    width: 100%;
+    margin-top: 5px;
+    padding: 6px;
+    border-radius: 4px;
+    outline-color: green;
+}
 
-        .custom-input {
-            display: flex;
-        }
+.custom-body {
+    width: 100%;
+    margin-top: 5px;
+}
 
-        .custom-input>div {
-            flex-basis: 50%;
-        }
-        .key,
-        .value {
-            width: 97%;
-            margin: 5px 0;
-            padding: 6px;
-            border-radius: 4px;
-            outline-color: green;
-        }
-        .more {
-            display: flex;
-        }
-        .customBtn {
-            background: green;
-            color: #fff;
-            cursor: pointer;
-            border-radius: 4px;
-            font-weight: bolder;
-            border: 0;
-            padding: 6px 8px;
-            margin-left:3px ;
-        }
-        #go{
-            width:100px;
-            cursor: pointer;
-            padding:6px 10px;
-            background:green;
-            border:0;
-            border-radius: 6px;
-            color:#fff;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        #go:hover{
-            background:rgba(2, 139, 48, 0.877);
-        }
-        .wait{
-            color:green;
-        }
-    
+.custom-input {
+    display: flex;
+}
+
+.custom-input>div {
+    flex-basis: 50%;
+}
+
+.key,
+.header-key,
+.value,
+.header-value {
+    width: 97%;
+    margin: 5px 0;
+    padding: 6px;
+    border-radius: 4px;
+    outline-color: green;
+}
+
+.more {
+    display: flex;
+}
+
+.customBtn {
+    background: green;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bolder;
+    border: 0;
+    padding: 6px 8px;
+    margin-left: 3px;
+}
+
+.customHeaderBtn {
+    background: skyblue;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bolder;
+    border: 0;
+    padding: 6px 8px;
+    margin-left: 3px;
+}
+
+#go {
+    width: 100px;
+    cursor: pointer;
+    padding: 6px 10px;
+    background: green;
+    border: 0;
+    border-radius: 6px;
+    color: #fff;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+#go:hover {
+    background: rgba(2, 139, 48, 0.877);
+}
+
+.wait {
+    color: green;
+}
+
+#addHeader {
+    width: 130px;
+    cursor: pointer;
+    padding: 6px 10px;
+    background: skyblue;
+    border: 0;
+    border-radius: 6px;
+    color: #fff;
+    font-weight: bold;
+    transition: 0.3s;
+    margin-right: 3px;
+}
+
+#addHeader:hover {
+    background: rgb(55, 102, 121);
+}
